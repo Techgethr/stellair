@@ -19,11 +19,12 @@ export async function sendXLM(destination: string, amount: string){
 
 
     const sourceAccount = await server.getAccount(sourceKeypair.publicKey());
+    const networkSelected = process.env.STELLAR_NETWORK == "futurenet" ? Networks.FUTURENET: (process.env.STELLAR_NETWORK == "testnet"? Networks.TESTNET : Networks.PUBLIC);
 
     const transaction = new TransactionBuilder(sourceAccount, {
       fee: BASE_FEE
     })
-    .setNetworkPassphrase(Networks.TESTNET)
+    .setNetworkPassphrase(networkSelected)
       .addOperation(
         Operation.payment({
           destination: destination,
@@ -62,11 +63,12 @@ export async function sendAsset(destination: string, amount: string, token: stri
     const sourceAccount = await server.getAccount(sourceKeypair.publicKey());
 
     const asset = new Asset(token,issuer);
+    const networkSelected = process.env.STELLAR_NETWORK == "futurenet" ? Networks.FUTURENET: (process.env.STELLAR_NETWORK == "testnet"? Networks.TESTNET : Networks.PUBLIC);
 
     const transaction = new TransactionBuilder(sourceAccount, {
       fee: BASE_FEE
     })
-    .setNetworkPassphrase(Networks.TESTNET)
+    .setNetworkPassphrase(networkSelected)
       .addOperation(
         Operation.payment({
           destination: destination,
