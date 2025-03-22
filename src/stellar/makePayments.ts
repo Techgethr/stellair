@@ -17,6 +17,7 @@ export async function sendXLM(destination: string, amount: string){
     const sourceKeypair = Keypair.fromSecret(process.env.WALLET_SECRETKEY);
     const server = new rpc.Server(process.env.STELLAR_SERVER);
 
+
     const sourceAccount = await server.getAccount(sourceKeypair.publicKey());
 
     const transaction = new TransactionBuilder(sourceAccount, {

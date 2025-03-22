@@ -75,7 +75,7 @@ export async function getAddress() {
       (balance: any) => balance.asset_type !== "native"
     );
 
-    return nonNativeBalances.map((token) => `Currency: ${token.asset_code}, Amount: ${token.balance}, Issuer: ${token.asset_issuer}, Authorized to use the asset:${token.is_authorized}`).join("\n") ;
+    return nonNativeBalances.map((token) => `Currency code: ${token.asset_code}, Amount: ${token.balance}, Issuer: ${token.asset_issuer}, Authorized to use the asset:${token.is_authorized}`).join("\n") ;
 }
 
 
