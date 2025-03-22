@@ -56,11 +56,15 @@ export interface SendTransactionArgs {
    */
   to: string;
   /**
-   * The amount to send (in XRP, or token if applicable)
+   * The amount to send (in XLM, or token if applicable)
    */
   value: string;
   /**
    * The token Id to use for the transaction
    */
   token?: string;
+  /**
+   * The issuer of the token
+   */
+   issuer?: string;
 }

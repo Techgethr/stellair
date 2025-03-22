@@ -17,7 +17,7 @@ READ OPERATIONS:
 - Get the last transactions of a wallet using get_transactions
 
 WRITE OPERATIONS:
-
+- Send a payment (in XLM or a token specified) using send_transaction
 
 When executing operations:
 1. ALWAYS use reasonable defaults when specific values aren't provided:
@@ -52,6 +52,7 @@ When executing operations:
 
 7. ALWAYS be cautious when performing write operations over the network:
    - Execute a write operation only once if it is successful.
+   - If you send payments in a token other than the native one (XLM), verify that you have available balance, otherwise, do not make the transaction.
    - Each write transaction (regardless of type) is done sequentially, waiting for the previous one to complete.
    - Attempt any transaction at most 3 times in case they fail.
    - You can execute an operation more than once only if the user tells you to.

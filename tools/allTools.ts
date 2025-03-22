@@ -2,6 +2,7 @@ import { getWalletAddressTool } from "./getWalletAddress";
 import { getBalanceTool } from "./getBalance";
 import { getTokenBalancesTool } from "./getTokenBalances";
 import { getTransactionsTool } from "./getTransactions";
+import { sendTransactionTool } from "./sendTransaction";
 
 export interface ToolConfig<T = any> {
   /**
@@ -44,4 +45,9 @@ export const tools: Record<string, ToolConfig> = {
    * Get the last transactions of a wallet address.
    */
    get_transactions: getTransactionsTool,
+
+  /**
+   * Send payment
+   */
+   send_transaction: sendTransactionTool,
 };
